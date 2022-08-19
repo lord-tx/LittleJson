@@ -11,10 +11,7 @@
 #endif
 **/
 
-LittleJson::LittleJson()
-{
-    //ctor
-}
+LittleJson::LittleJson(){}//ctor
 
 LittleJson::~LittleJson()
 {
@@ -24,18 +21,14 @@ LittleJson::~LittleJson()
 
 void LittleJson::init(std::string& jsonInitString){
     /// Set all necessary class parameters to default
-    initCalled = true;
-    current_location = 0;
-    currentChar = nullptr;
-    previousChar = nullptr;
-    nextChar = nullptr;
+    ResetValues();
 
     /// Set the internal class String to this.
     jsonString = jsonInitString;
 
     /// Start the token retrieval process
     try{
-        getNextToken();
+        AdvancePointer();
     } catch (InitException e){
         //  Trace Log
     }
@@ -52,16 +45,6 @@ std::string LittleJson::encodeJson(){
     return "-";
 }
 
-JsonObject LittleJson::getNextToken(){
-
-    /// At the start of the Stream process ---
-    /// Set the class param to proper params
-    if (current_location == 0){
-
-    }
-
-    if (currentChar == nullptr || nextChar == nullptr || previousChar == nullptr){
-        throw InitException("All tokens are empty -- current || next || previous");
-    }
+void LittleJson::AdvancePointer() const{
 
 }

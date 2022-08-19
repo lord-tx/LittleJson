@@ -9,3 +9,7 @@ JsonObject::~JsonObject()
 {
     //dtor
 }
+
+bool JsonObject::verifyType(JsonObjectType toVerify){
+    return false;
+}
