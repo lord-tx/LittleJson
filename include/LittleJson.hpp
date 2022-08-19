@@ -18,54 +18,71 @@
 #include <map>
 #include <JsonObject.hpp>
 #include <InitException.hpp>
+#include <EntryEnumType.hpp>
+#include <ModeEnumType.hpp>
+
+/// LittleJSON object initialization is called
+/// from the init function to enable caught errors
+/// to be handled;
 
 class LittleJson
 {
-    public:
-        LittleJson();
-        /// LittleJSON object initialization is called
-        /// from the init function to enable caught errors
-        /// to be handled;
-        void init(std::string&);
-        ~LittleJson();
-
-        LittleJson parseJson();
-		std::string encodeJson();
+public:
+    LittleJson();
+    void init(std::string&);
+    ~LittleJson();
+    
+    
+    LittleJson parseJson();
+    std::string encodeJson();
 
 
-    protected:
-        /// Function to retrieve the next available token
-        /// or return a closing token or an error;
-        JsonObject getNextToken();
+protected:
+    /// Function to Move Pointer Char
+    void AdvancePointer() const;
+    /// Evaluate the current Char pointed to
+    void EvaluateCurrent() const;
+    /// Parse a char to a respective JsonObject
+    void setCharType();
+    /// Append char to currentKey
+    void appendKey();
+    /// Append char to Value
+    void appendValue();
 
-    private:
-        /// Init Verification
-        bool initCalled = false;
-
-        /// Elements to track the token pointer
-        int current_location;
-        char* currentChar;
-        char* previousChar;
-        char* nextChar;
-        /// Token for evaluation
-        char* lastToken;
-
-        /// JSON String object copied into object
-        /// TODO: Transform this to Heap if necessary.
-        std::string jsonString;
-
-        /// Functions to get JsonObject
-        JsonObject operator[](std::string& value);
-
-        /// JSON keys and values contained for easy retrieval.
-        std::vector<std::string> keys;
-		std::vector<JsonObject> values;
-
-		/// Main element JSON mapping
-		std::map<std::string, JsonObject> json;
-
-		void clearLastToken();
-		void setNextChar(char& nextC);
+private:
+    /// Final Function to Insert Key and Value Pair
+    void InsertValues();
+    /// Final Function to Reset set parameters
+    void ResetValues();
+    /// Check for escape sequences 
+    void CheckEscapes();
+    /// Try to verify the current_mode
+    void VerifyMode(ModeEnumType expectedMode);
+    
+    
+    /// Track Current Key and Current Value
+    char* currentChar;
+    std::string currentKey;
+    JsonObject currentObject;
+    
+    /// Integer to manage pointer movement
+    int charPointer;
+    
+    /// Keeping track of current Mode
+    ModeEnumType currentMode;
+    /// Map object to Key, Value or none
+	EntryEnumType currentEntry;
+    /// Keep track of charType for mapping
+	JsonObject charType;
+    
+    /// Collection of keys and values
+	std::vector<std::string> keys;
+	std::vector<JsonObject> values;
+    
+    /// Final json map and string
+	std::map<std::string, JsonObject> json;
+    std::string jsonString;
+    
 };
 
 #endif // LITTLEJSON_HPP

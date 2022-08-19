@@ -1,1 +1,1 @@
-Debug/InitException.cpp.o Debug/LittleJson.cpp.o Debug/JsonObject.cpp.o Debug/main.cpp.o
+Debug/main.cpp.o Debug/JsonObject.cpp.o Debug/LittleJson.cpp.o Debug/InitException.cpp.o

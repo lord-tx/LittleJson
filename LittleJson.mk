@@ -62,7 +62,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/InitException.cpp$(ObjectSuffix) $(IntermediateDirectory)/LittleJson.cpp$(ObjectSuffix) $(IntermediateDirectory)/JsonObject.cpp$(ObjectSuffix) $(IntermediateDirectory)/main.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/JsonObject.cpp$(ObjectSuffix) $(IntermediateDirectory)/LittleJson.cpp$(ObjectSuffix) $(IntermediateDirectory)/InitException.cpp$(ObjectSuffix) 
 
 
 
@@ -93,17 +93,11 @@ PreBuild:
 ##
 ## Objects
 ##
-$(IntermediateDirectory)/InitException.cpp$(ObjectSuffix): InitException.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/InitException.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/InitException.cpp$(DependSuffix) -MM InitException.cpp
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/markjordan/CProjects/ActiveCoder/LittleJson/InitException.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/InitException.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/InitException.cpp$(PreprocessSuffix): InitException.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/InitException.cpp$(PreprocessSuffix) InitException.cpp
-
-$(IntermediateDirectory)/LittleJson.cpp$(ObjectSuffix): LittleJson.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/LittleJson.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/LittleJson.cpp$(DependSuffix) -MM LittleJson.cpp
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/markjordan/CProjects/ActiveCoder/LittleJson/LittleJson.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/LittleJson.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/LittleJson.cpp$(PreprocessSuffix): LittleJson.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/LittleJson.cpp$(PreprocessSuffix) LittleJson.cpp
+$(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM main.cpp
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/markjordan/CProjects/ActiveCoder/LittleJson/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) main.cpp
 
 $(IntermediateDirectory)/JsonObject.cpp$(ObjectSuffix): JsonObject.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/JsonObject.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/JsonObject.cpp$(DependSuffix) -MM JsonObject.cpp
@@ -111,11 +105,17 @@ $(IntermediateDirectory)/JsonObject.cpp$(ObjectSuffix): JsonObject.cpp
 $(IntermediateDirectory)/JsonObject.cpp$(PreprocessSuffix): JsonObject.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/JsonObject.cpp$(PreprocessSuffix) JsonObject.cpp
 
-$(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM main.cpp
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/markjordan/CProjects/ActiveCoder/LittleJson/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) main.cpp
+$(IntermediateDirectory)/LittleJson.cpp$(ObjectSuffix): LittleJson.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/LittleJson.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/LittleJson.cpp$(DependSuffix) -MM LittleJson.cpp
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/markjordan/CProjects/ActiveCoder/LittleJson/LittleJson.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/LittleJson.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/LittleJson.cpp$(PreprocessSuffix): LittleJson.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/LittleJson.cpp$(PreprocessSuffix) LittleJson.cpp
+
+$(IntermediateDirectory)/InitException.cpp$(ObjectSuffix): InitException.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/InitException.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/InitException.cpp$(DependSuffix) -MM InitException.cpp
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/markjordan/CProjects/ActiveCoder/LittleJson/InitException.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/InitException.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/InitException.cpp$(PreprocessSuffix): InitException.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/InitException.cpp$(PreprocessSuffix) InitException.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
